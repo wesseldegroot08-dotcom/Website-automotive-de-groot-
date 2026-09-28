@@ -10,14 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0f10;
-      --bg-alt: #17171a;
-      --card: #1e1e22;
-      --text: #f2f2f2;
-      --muted: #a3a3ab;
-      --gold: #c9a24a;
-      --gold-light: #e2c275;
-      --line: #2c2c31;
+      color-scheme: dark;
+      --bg: #0a0a0a;
+      --bg-alt: #141414;
+      --card: #1c1c1c;
+      --text: #f5f5f5;
+      --muted: #9e9e9e;
+      --accent: #ffffff;
+      --accent-soft: #cfcfcf;
+      --line: #2e2e2e;
       --radius: 12px;
       --max: 1120px;
     }
@@ -37,7 +38,7 @@
     section { padding: 90px 0; }
     h1, h2, h3 { font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; }
     h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 14px; }
-    .eyebrow { color: var(--gold); font-weight: 600; font-size: .85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; display: block; }
+    .eyebrow { color: var(--accent); font-weight: 600; font-size: .85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; display: block; }
     .lead { color: var(--muted); max-width: 620px; }
     .center { text-align: center; }
     .center .lead { margin: 0 auto; }
@@ -46,56 +47,57 @@
       display: inline-block; padding: 14px 28px; border-radius: 999px;
       font-weight: 600; font-size: .95rem; transition: .2s ease; cursor: pointer; border: 2px solid transparent;
     }
-    .btn-gold { background: var(--gold); color: #111; }
-    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-main { background: var(--accent); color: #111; }
+    .btn-main:hover { background: var(--accent-soft); transform: translateY(-2px); }
     .btn-outline { border-color: var(--text); color: var(--text); }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ---------- Header ---------- */
     header {
       position: fixed; inset: 0 0 auto 0; z-index: 50;
+      padding-top: env(safe-area-inset-top, 0px);
       background: rgba(15, 15, 16, .85); backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
     .logo { font-family: "Oswald", sans-serif; font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
-    .logo span { color: var(--gold); }
+    .logo span { color: var(--accent); }
     .nav ul { list-style: none; display: flex; gap: 28px; align-items: center; }
     .nav ul a { font-size: .95rem; color: var(--muted); transition: color .2s; }
-    .nav ul a:hover { color: var(--gold); }
+    .nav ul a:hover { color: var(--accent); }
     .nav .btn { padding: 10px 20px; color: #111; }
     .menu-toggle { display: none; background: none; border: 0; color: var(--text); cursor: pointer; }
 
     /* ---------- Hero ---------- */
     .hero {
-      min-height: 100vh; display: flex; align-items: center; padding-top: 72px;
+      display: flex; align-items: center; padding: 150px 0 100px;
       background:
-        radial-gradient(circle at 80% 30%, rgba(201, 162, 74, .18), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.07), transparent 45%),
         repeating-linear-gradient(135deg, rgba(255,255,255,.02) 0 2px, transparent 2px 14px),
         var(--bg);
     }
     .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
     .hero h1 { font-size: clamp(2.8rem, 7vw, 5.2rem); margin-bottom: 20px; }
-    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero h1 em { font-style: normal; color: var(--accent); }
     .hero p { color: var(--muted); font-size: 1.1rem; max-width: 520px; margin-bottom: 32px; }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
     .hero-stats { display: flex; gap: 36px; margin-top: 48px; flex-wrap: wrap; }
-    .hero-stats strong { display: block; font-family: "Oswald", sans-serif; font-size: 2rem; color: var(--gold); }
+    .hero-stats strong { display: block; font-family: "Oswald", sans-serif; font-size: 2rem; color: var(--accent); }
     .hero-stats span { color: var(--muted); font-size: .9rem; }
 
     .hero-visual {
       aspect-ratio: 4 / 5; border-radius: 200px 200px var(--radius) var(--radius);
-      background: linear-gradient(160deg, #26262b, #121214);
+      background: linear-gradient(160deg, #262626, #111);
       border: 1px solid var(--line); display: grid; place-items: center; position: relative; overflow: hidden;
     }
     .hero-visual::after {
-      content: ""; position: absolute; inset: 18px; border: 1px solid rgba(201,162,74,.35);
+      content: ""; position: absolute; inset: 18px; border: 1px solid rgba(255,255,255,.25);
       border-radius: 190px 190px 8px 8px;
     }
-    .pole { width: 64px; height: 62%; border-radius: 32px; overflow: hidden; position: relative; box-shadow: 0 0 0 6px #2f2f35, 0 20px 50px rgba(0,0,0,.6); }
+    .pole { width: 64px; height: 62%; border-radius: 32px; overflow: hidden; position: relative; box-shadow: 0 0 0 6px #333, 0 20px 50px rgba(0,0,0,.6); }
     .pole::before {
       content: ""; position: absolute; inset: -100% 0 0 0;
-      background: repeating-linear-gradient(160deg, #c0392b 0 18px, #f2f2f2 18px 36px, #1f4e9c 36px 54px, #f2f2f2 54px 72px);
+      background: repeating-linear-gradient(160deg, #111 0 18px, #f5f5f5 18px 36px, #7a7a7a 36px 54px, #f5f5f5 54px 72px);
       animation: spin 4s linear infinite;
     }
     @keyframes spin { to { transform: translateY(50%); } }
@@ -107,13 +109,13 @@
     .about p { color: var(--muted); margin-bottom: 16px; }
     .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
     .feature { display: flex; gap: 12px; align-items: flex-start; }
-    .feature svg { flex-shrink: 0; color: var(--gold); margin-top: 3px; }
+    .feature svg { flex-shrink: 0; color: var(--accent); margin-top: 3px; }
     .quote-card {
-      background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--gold);
+      background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent);
       border-radius: var(--radius); padding: 36px;
     }
     .quote-card blockquote { font-family: "Oswald", sans-serif; font-size: 1.6rem; line-height: 1.3; margin-bottom: 18px; }
-    .quote-card cite { color: var(--gold); font-style: normal; font-weight: 600; }
+    .quote-card cite { color: var(--accent); font-style: normal; font-weight: 600; }
 
     /* ---------- Diensten ---------- */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 48px; }
@@ -121,12 +123,12 @@
       background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px;
       transition: border-color .2s, transform .2s;
     }
-    .service:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .service:hover { border-color: var(--accent); transform: translateY(-4px); }
     .service-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; }
     .service h3 { font-size: 1.3rem; }
-    .price { font-family: "Oswald", sans-serif; color: var(--gold); font-size: 1.4rem; white-space: nowrap; }
+    .price { font-family: "Oswald", sans-serif; color: var(--accent); font-size: 1.4rem; white-space: nowrap; }
     .service p { color: var(--muted); font-size: .95rem; }
-    .duration { display: inline-block; margin-top: 14px; font-size: .8rem; color: var(--gold-light); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; }
+    .duration { display: inline-block; margin-top: 14px; font-size: .8rem; color: var(--accent-soft); border: 1px solid var(--line); padding: 4px 10px; border-radius: 999px; }
 
     /* ---------- Team ---------- */
     .team { background: var(--bg-alt); }
@@ -134,8 +136,8 @@
     .member { background: var(--card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
     .avatar {
       aspect-ratio: 1; display: grid; place-items: center;
-      font-family: "Oswald", sans-serif; font-size: 4rem; color: var(--gold);
-      background: linear-gradient(145deg, #2a2a30, #151518);
+      font-family: "Oswald", sans-serif; font-size: 4rem; color: var(--accent);
+      background: linear-gradient(145deg, #2a2a2a, #151515);
     }
     .member-info { padding: 20px; }
     .member-info h3 { font-size: 1.2rem; }
@@ -144,7 +146,7 @@
     /* ---------- Reviews ---------- */
     .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
     .review { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
-    .stars { color: var(--gold); letter-spacing: 3px; margin-bottom: 12px; }
+    .stars { color: var(--accent); letter-spacing: 3px; margin-bottom: 12px; }
     .review p { color: var(--muted); margin-bottom: 14px; }
     .review strong { font-size: .95rem; }
 
@@ -158,25 +160,25 @@
       width: 100%; background: var(--bg); border: 1px solid var(--line); color: var(--text);
       padding: 12px 14px; border-radius: 8px; font: inherit;
     }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
     form .btn { width: 100%; font-size: 1rem; border: 0; }
-    .form-msg { display: none; background: rgba(201,162,74,.12); border: 1px solid var(--gold); color: var(--gold-light); padding: 12px 14px; border-radius: 8px; }
+    .form-msg { background: rgba(255,255,255,.08); border: 1px solid var(--accent); color: var(--accent-soft); padding: 12px 14px; border-radius: 8px; }
 
     .info { display: grid; gap: 20px; align-content: start; }
     .info-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
-    .info-card h3 { font-size: 1.15rem; margin-bottom: 14px; color: var(--gold); }
+    .info-card h3 { font-size: 1.15rem; margin-bottom: 14px; color: var(--accent); }
     .hours { list-style: none; }
     .hours li { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: .95rem; }
     .hours li:last-child { border-bottom: 0; }
-    .hours li.today { color: var(--gold-light); font-weight: 600; }
+    .hours li.today { color: var(--accent-soft); font-weight: 600; }
     .contact-line { display: flex; gap: 10px; align-items: center; color: var(--muted); margin-bottom: 8px; }
-    .contact-line svg { color: var(--gold); flex-shrink: 0; }
+    .contact-line svg { color: var(--accent); flex-shrink: 0; }
 
     /* ---------- Footer ---------- */
     footer { border-top: 1px solid var(--line); padding: 36px 0; color: var(--muted); font-size: .9rem; }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
     .socials { display: flex; gap: 16px; }
-    .socials a:hover { color: var(--gold); }
+    .socials a:hover { color: var(--accent); }
 
     /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
@@ -214,7 +216,7 @@
         <li><a href="#team">Team</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#boeken">Contact</a></li>
-        <li><a href="#boeken" class="btn btn-gold">Boek nu</a></li>
+        <li><a href="#boeken" class="btn btn-main">Boek nu</a></li>
       </ul>
     </div>
   </header>
@@ -227,7 +229,7 @@
         <h1>Fresh cut.<br><em>Sharp look.</em></h1>
         <p>Bij AJ Barber loop je naar buiten met een strakke fade, een verzorgde baard en een goed gevoel. Geen gedoe – gewoon vakwerk.</p>
         <div class="hero-actions">
-          <a href="#boeken" class="btn btn-gold">Maak een afspraak</a>
+          <a href="#boeken" class="btn btn-main">Maak een afspraak</a>
           <a href="#diensten" class="btn btn-outline">Bekijk prijzen</a>
         </div>
         <div class="hero-stats">
@@ -412,8 +414,8 @@
             <label>Tijd<input type="time" name="tijd" min="09:00" max="20:00" step="900" required></label>
           </div>
           <label>Opmerking (optioneel)<textarea name="opmerking" rows="3" placeholder="Bijv. foto van gewenste coupe meenemen"></textarea></label>
-          <button type="submit" class="btn btn-gold">Afspraak aanvragen</button>
-          <p class="form-msg" id="form-msg" role="status"></p>
+          <button type="submit" class="btn btn-main">Afspraak aanvragen</button>
+          <p class="form-msg" id="form-msg" role="status" hidden></p>
         </form>
 
         <div class="info">
@@ -494,7 +496,7 @@
       const data = new FormData(e.target);
       const day = new Date(data.get('datum')).getDay();
       const msg = document.getElementById('form-msg');
-      msg.style.display = 'block';
+      msg.hidden = false;
       if (day === 0 || day === 1) {
         msg.textContent = 'Op maandag en zondag zijn we gesloten. Kies een andere dag.';
         return;
